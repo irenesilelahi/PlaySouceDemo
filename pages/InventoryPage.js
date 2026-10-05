@@ -5,6 +5,7 @@ export class InventoryPage {
     this.items = page.locator('.inventory_item');
     this.addToCartButtons = page.locator('button.btn_inventory');
     this.cartIcon = page.locator('.shopping_cart_link');
+    this.filterDropdown = page.locator('.product_sort_container');
   }
 
   async addItems(count) {
@@ -19,6 +20,10 @@ export class InventoryPage {
     for (const i of indexes) {
       await this.addToCartButtons.nth(i).click();
     }
+  }
+
+  async selectFilter(option) {
+    await this.filterDropdown.selectOption(option);
   }
 
   async goToCart() {
